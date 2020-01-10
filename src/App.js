@@ -55,7 +55,7 @@ class App extends Component {
     let {items, nameSearch} = this.state;
 
     if (nameSearch !== '') {
-      items = this.state.resultSearch;
+      items = this.state.resultSearch; 
     }
 
     if (items.length === 0) {
@@ -232,7 +232,6 @@ class App extends Component {
 
     this.handleChangeNameSearch(nameSearch);
 
-    console.log(this.state.resultSearch);
   }
 
   handleChangeFieldSort = (field) => {
@@ -240,10 +239,11 @@ class App extends Component {
       sortType: field,
     })
 
-    let {items, sortOrder} = this.state;
+    let {items, sortOrder, resultSearch} = this.state;
 
     this.setState({
-      items: orderByld(items, [field], [sortOrder])
+      items: orderByld(items, [field], [sortOrder]),
+      resultSearch: orderByld(resultSearch, [field], [sortOrder]),
     })
   }
 
@@ -252,10 +252,11 @@ class App extends Component {
       sortOrder: type,
     })
 
-    let {items, sortType} = this.state;
+    let {items, sortType, resultSearch} = this.state;
 
     this.setState({
       items: orderByld(items, [sortType], [type]),
+      resultSearch: orderByld(resultSearch, [sortType], [type]),
     })
   }
 
